@@ -17,12 +17,12 @@ class SearchRecipes extends Component {
 
     search() {
         let { ingredients, dish } = this.state;
-        const url = `http://www.recipepuppy.com/api/?i=${ingredients}&q=${dish}`;
+        const url = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${ingredients}&q=${dish}`;
         console.log('state', this.state, 'url', url);
 
-        fetch(url, { method: 'GET'})
-            .then(response => response.json())
-            .then(json => {
+        fetch(url, { method: 'GET' }
+        ).then(response => response.json())
+         .then(json => {
                 this.props.setRecipes(json.results)
             }
         );
@@ -30,25 +30,28 @@ class SearchRecipes extends Component {
 
     render() {
         return (
-            <Form className="justify-content-center" inline>
-                <FormGroup>
-                    <ControlLabel>Ingredients</ControlLabel>
-                    <FormControl 
-                        type="text" 
-                        placeholder="garlic, chicken" 
-                        onChange={ event => this.setState({ ingredients: event.target.value }) }
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <ControlLabel>Dish</ControlLabel>
-                    <FormControl 
-                        type="text" 
-                        placeholder="adobo" 
-                        onChange={ event => this.setState({ dish: event.target.value }) }
-                    /> 
-                </FormGroup>
-                <Button onClick={ () => this.search() }>Submit</Button>
-            </Form>
+            <div className="background-image">
+                <h2>Recipe Finder</h2>
+                <Form className="justify-content-center" inline>
+                    <FormGroup>
+                        <ControlLabel>Ingredients</ControlLabel>
+                        <FormControl 
+                            type="text" 
+                            placeholder="garlic, chicken" 
+                            onChange={ event => this.setState({ ingredients: event.target.value }) }
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <ControlLabel>Dish</ControlLabel>
+                        <FormControl 
+                            type="text" 
+                            placeholder="adobo" 
+                            onChange={ event => this.setState({ dish: event.target.value }) }
+                        /> 
+                    </FormGroup>
+                    <Button onClick={ () => this.search() }>Submit</Button>
+                </Form>
+            </div>
         )
     }
 }
