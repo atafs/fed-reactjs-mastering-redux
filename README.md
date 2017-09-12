@@ -1,6 +1,12 @@
 # fed-reactjs-mastering-redux
 - OS: Linux Ubuntu
 
+## App Deployed in Heroku
+app: https://app-react-redux-recipe-finder.herokuapp.com/
+
+## Video of the App running
+video: https://www.youtube.com/watch?v=Gm-m6DnWIeM&list=PLBaNeIDelX0I23h43D-TUsk16fjY0Bujc&index=2
+
 ## Setup Project
 Package manager:
 > sudo npm install -g yarn

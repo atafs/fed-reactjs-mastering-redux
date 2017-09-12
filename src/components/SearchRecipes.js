@@ -17,12 +17,14 @@ class SearchRecipes extends Component {
 
     search() {
         let { ingredients, dish } = this.state;
-        const url = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${ingredients}&q=${dish}`;
+        const url = `http://www.recipepuppy.com/api/?i=${ingredients}&q=${dish}`;
         console.log('state', this.state, 'url', url);
 
-        fetch(url, { method: 'GET' }
-        ).then(response => response.json())
-         .then(json => {
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+
+        fetch(proxyUrl + url, { method: 'GET' })
+            .then(response => response.json())
+            .then(json => {
                 this.props.setRecipes(json.results)
             }
         );
